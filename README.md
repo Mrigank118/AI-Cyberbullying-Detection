@@ -1,0 +1,27 @@
+# AI-Powered Threat Detection for LinkedIn
+
+## Overview
+This project is an **AI-powered browser extension** designed to detect, prevent, and mitigate harassment, inappropriate content, and threats across the **LinkedIn** platform. The extension employs sophisticated machine learning (ML) algorithms and natural language processing (NLP) techniques to monitor and analyze user interactions, including messages, posts, comments, and other content, in real time. By leveraging state-of-the-art NLP models, the tool identifies subtle forms of cyberbullying, threats, inappropriate language, and harassment that are often overlooked by traditional rule-based detection systems.
+
+The extension offers several unique features, such as the ability to flag harmful content automatically, highlight suspicious interactions with color-coded warnings, and provide users with the option to report incidents through customizable email notifications. Additionally, the extension captures screenshots with time-stamped evidence, ensuring that incidents are well-documented. By doing so, it helps create a safer, more professional environment for users and protects individuals from online abuse while maintaining privacy and confidentiality.
+
+## Features
+- **LinkedIn-Specific Harassment Detection**: Identifies and flags harmful content within LinkedIn’s messaging system, posts, comments, endorsements, and other interactions that may contain threatening, discriminatory, or inappropriate language. 
+- **Real-Time Detection with AI**: Uses machine learning (ML) models to perform contextual analysis, detecting nuanced forms of harassment, verbal abuse, or cyberbullying beyond simple keyword matching. This ensures more accurate and intelligent detection.
+- **Context-Aware AI Detection**: The AI model analyzes content within a broader context, understanding the nuances of conversation to flag language and behavior that may not be immediately recognized by rule-based systems. 
+- **Customizable Reporting System**: Users can define the severity of incidents (e.g., mild, moderate, severe) and report harmful content to LinkedIn’s moderation team with attached evidence. The system also generates automatic screenshots with timestamps to serve as proof of incidents.
+- **Threat Badge for Repeat Offenders**: Users who consistently engage in harassment or abusive behavior are marked with a “threat badge” next to their name, visible to others. This is similar to spam flags, but for harassment, helping to warn others about a potential threat.
+- **Privacy and Security Focused**: The extension complies with privacy regulations (e.g., GDPR) and ensures all flagged content and personal data are securely stored and encrypted. The system prioritizes confidentiality and user consent.
+
+## Target Audience
+This extension is specifically designed for **sensitive individuals**, particularly **women**, **children**, and **parents**, who may be concerned about online harassment or abuse on professional platforms like LinkedIn. Studies show that **1 in 4 women** experience online harassment, with LinkedIn being a common platform for such incidents. This extension aims to provide women and other vulnerable groups with an added layer of protection against inappropriate behavior in a professional context.
+
+Additionally, **40% of parents** report concerns about their children’s online safety, including the risk of cyberbullying on social platforms. The extension offers these parents peace of mind by helping monitor and flag inappropriate behavior on LinkedIn. Moreover, the extension serves **HR teams**, **recruiters**, and **professionals** who seek to maintain a secure and harassment-free online environment, fostering a more respectful and inclusive workspace.
+
+## Technologies Used
+- **Frontend**: The browser extension is built using **JavaScript** (React.js) and browser extension APIs, ensuring compatibility across popular browsers such as Chrome and Firefox. The extension's UI is built using **TailwindCSS** for rapid design development and **DaisyUI** for pre-built components.
+- **Backend**: The backend of the system is developed using **Python**, with frameworks such as **Flask** or **Django** to handle server-side operations and API requests. It manages the user authentication, interaction with machine learning models, and database operations.
+- **Machine Learning**: The extension leverages popular ML frameworks such as **TensorFlow** and **PyTorch** to train and deploy machine learning models for threat and harassment detection. Pretrained models like **BERT** or **RoBERTa** from **Hugging Face** are fine-tuned for the specific task of analyzing LinkedIn content.
+- **NLP (Natural Language Processing)**: The core of the detection system is based on NLP techniques to analyze textual data and detect subtle forms of harassment or threats in real-time. Techniques like sentiment analysis, keyword extraction, and context modeling are applied.
+- **Database**: The extension stores data such as user reports, flagged content, and evidence in a secure database. We use databases like **PostgreSQL** or **MongoDB** to ensure efficient data handling and scalability.
+- **Cloud Services**: The machine learning models are hosted and deployed using cloud services such as **AWS** or **Google Cloud Platform (GCP)**, providing the computational power necessary to run the models in real-time.

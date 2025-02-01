@@ -1,0 +1,57 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+env/
+venv/
+*.db
+*.sqlite3
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Node Modules
+node_modules/
+
+# Logs
+*.log
+
+# Temporary files
+*.swp
+*.swo
+
+# .env file for environment variables
+.env
+
+# MacOS Finder
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# PyInstaller
+dist/
+build/
+
+# Backend and frontend dependencies
+/dist
+/node_modules
+/coverage
+
+# Visual Studio Code Settings
+.vscode
+
+# Coverage reports
+coverage/
+
+# Databases
+*.sqlite3
+*.db
+
+# System-specific files
+*.bak
+*.swp
