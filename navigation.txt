@@ -1,0 +1,54 @@
+linkedin-safety-extension/
+│
+├── backend/                           # Backend code for Flask and AI services
+│   ├── app.py                         # Main entry point for the Flask app. Runs the server and API.
+│   ├── config.py                      # Configuration file for the backend (e.g., AI models, email service)
+│   ├── routes/                        # API routes to handle user requests
+│   │   └── ai_routes.py               # Handles AI detection and report-related API routes
+│   ├── services/                      # Core backend logic for AI detection, screenshot, and email
+│   │   ├── detect.py                  # AI-based harassment detection (loads model and processes messages)
+│   │   ├── screenshot.py              # Logic to capture screenshots when harassment is detected
+│   │   └── email_service.py           # Sends email with screenshot/report to the user
+│   ├── utils/                         # Helper functions and utilities
+│   │   └── utils.py                   # Utility functions (e.g., timestamp generation, logging)
+│   ├── models/                        # Folder to store AI models
+│   │   └── harassment_model.pkl       # Pre-trained model for harassment detection
+│   ├── dataset/                       # Folder for storing dataset for training AI models
+│   │   └── harassment_data.csv        # Labeled dataset for training the harassment detection model
+│   └── __init__.py                    # Initializes the backend package and app setup
+│
+├── frontend/                          # LinkedIn Extension Frontend (UI/interaction)
+│   ├── popup.html                     # HTML for the popup UI when interacting with the extension
+│   ├── popup.js                       # JavaScript to handle popup actions (e.g., showing reports, toggles)
+│   ├── background.js                  # Background script that listens for LinkedIn activity
+│   ├── manifest.json                  # Manifest file to define the extension (permissions, scripts, etc.)
+│   ├── content_script.js              # Content script injected into LinkedIn pages for interaction
+│   └── assets/                        # Static files (icons, styles, etc.)
+│       └── icon.png                   # Icon for the extension
+│
+├── notebooks/                         # Jupyter notebooks for training, testing, and model evaluation
+│   ├── 01_data_preprocessing.ipynb    # Preprocessing the dataset (e.g., cleaning, tokenization)
+│   ├── 02_model_training.ipynb        # Training the AI model on the harassment dataset
+│   ├── 03_model_evaluation.ipynb      # Evaluating model performance (accuracy, precision, recall)
+│   ├── 04_inference_and_testing.ipynb # Making predictions and testing the trained model
+│   └── 05_demo_notebook.ipynb         # Example notebook demonstrating how to use the model in real scenarios
+│
+├── tests/                             # Unit and integration tests for the backend and frontend
+│   ├── test_detect.py                 # Tests for the AI detection logic (harassment detection accuracy)
+│   ├── test_screenshot.py             # Tests for screenshot capture functionality
+│   ├── test_email_service.py          # Tests for email reporting functionality
+│   ├── test_routes.py                 # Tests for the API routes (Flask routes for requests)
+│   ├── test_utils.py                  # Tests for utility functions (e.g., timestamp, logging)
+│   └── test_frontend.js               # Tests for frontend (JavaScript interactions)
+│
+├── docker/                            # Containerization setup for the project
+│   ├── Dockerfile                     # Dockerfile to containerize the backend app
+│   ├── docker-compose.yml             # Compose file to run both backend and any required services
+│   └── .dockerignore                  # List of files/folders to ignore when building the Docker image
+│
+├── .env                               # Stores sensitive environment variables (e.g., email credentials, API keys)
+├── requirements.txt                   # List of Python dependencies for backend (Flask, AI libraries, etc.)
+├── requirements_frontend.txt          # List of frontend dependencies (if using frameworks like React, etc.)
+├── README.md                          # Project documentation, setup instructions, features, and usage
+├── LICENSE                            # License file (e.g., MIT, GPL, etc.)
+└── .gitignore                         # Specifies files and directories to ignore in version control (e.g., `__pycache__/`)
