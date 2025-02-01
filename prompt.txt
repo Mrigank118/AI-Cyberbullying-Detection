@@ -1,0 +1,136 @@
+Here’s a **very detailed** project overview that your teammates can use to understand the entire concept, tech stack, and file structure. They can also use this to get precise answers from ChatGPT when working on their specific tasks.  
+
+---
+
+# **AI-Powered Cyberbullying Detection for LinkedIn**  
+
+## **🚨 Problem Statement**  
+Online harassment and cyberbullying are growing concerns, even on professional platforms like LinkedIn. While LinkedIn is designed for networking and career growth, reports suggest that **38% of professionals** have faced harassment on the platform. Women, marginalized groups, and sensitive individuals are particularly vulnerable, and **over 80% of such cases go unreported** due to lack of proper monitoring tools.  
+
+Current moderation systems struggle to detect **context-based harassment** hidden under professional language. Many victims do not report harassment due to fear of retaliation or the effort required. **There is a need for an AI-powered system that automatically detects and alerts users about cyberbullying, making LinkedIn a safer space for networking and professional interactions.**  
+
+---
+
+## **💡 Solution**  
+We are building an **AI-driven browser extension** that:  
+✅ **Monitors messages and posts on LinkedIn** in real-time  
+✅ **Uses an AI model trained to detect cyberbullying and harassment**  
+✅ **Alerts the user when harmful content is detected**  
+✅ **Provides an option to take a screenshot as proof**  
+✅ **Sends an email notification** with details and evidence  
+✅ **Allows users to report harassment directly from the extension**  
+
+This tool will help users feel **safer while networking**, giving them control over how they respond to harassment.  
+
+---
+
+## **🎯 Target Audience**  
+1️⃣ **Sensitive individuals** who feel uncomfortable with online hate speech  
+2️⃣ **Women and marginalized groups**, who are disproportionately targeted  
+3️⃣ **Parents** concerned about their children’s online professional presence  
+4️⃣ **HR professionals & company admins**, who want to ensure workplace safety  
+
+---
+
+## **🛠 Tech Stack**  
+
+### **Backend (AI + API Services)**  
+- **Language**: Python  
+- **Framework**: Flask (for API)  
+- **Machine Learning**: NLP model for cyberbullying detection  
+- **Database**: Storing labeled datasets for training  
+
+### **Frontend (Browser Extension)**  
+- **Language**: JavaScript  
+- **Chrome Extension APIs**: For injecting scripts into LinkedIn pages  
+- **UI**: Simple popup for managing settings and viewing reports  
+
+### **AI Model**  
+- **Dataset**: Labeled harassment dataset for LinkedIn conversations  
+- **Algorithm**: NLP-based classification model  
+- **Libraries**: Scikit-learn, TensorFlow/PyTorch, NLTK  
+
+### **DevOps & Deployment**  
+- **Containerization**: Docker  
+- **Version Control**: GitHub  
+- **Testing**: Unit and integration tests for API & frontend  
+
+---
+
+## **📂 File Structure & Explanation**  
+This is how the project is structured:  
+
+```
+ai-cyberbullying-detection/
+│
+├── backend/                           # Backend code for Flask API and AI model
+│   ├── app.py                         # Main entry point for the Flask app
+│   ├── config.py                      # Configuration file (API keys, email settings)
+│   ├── routes/                        # API endpoints for frontend communication
+│   │   └── ai_routes.py               # AI detection route (analyzes messages & returns results)
+│   ├── services/                      # Core backend services (AI detection, email, screenshots)
+│   │   ├── detect.py                   # AI model logic for harassment detection
+│   │   ├── screenshot.py               # Captures screenshots when harassment is detected
+│   │   ├── email_service.py            # Sends email alerts with evidence
+│   ├── utils/                         # Helper functions
+│   │   └── utils.py                    # Timestamp, logging, and other utilities
+│   ├── models/                        # Folder to store AI models
+│   │   └── harassment_model.pkl       # Pre-trained model
+│   ├── dataset/                       # Training dataset for the AI model
+│   │   └── harassment_data.csv        # Dataset containing labeled examples of cyberbullying
+│   └── __init__.py                    # Initializes backend modules
+│
+├── frontend/                          # Browser extension UI and scripts
+│   ├── popup.html                     # Extension popup interface
+│   ├── popup.js                       # Handles UI interactions
+│   ├── background.js                  # Listens for LinkedIn activity in the background
+│   ├── manifest.json                   # Defines extension permissions and behavior
+│   ├── content_script.js               # Injected into LinkedIn pages to analyze messages
+│   └── assets/                         # Static assets like icons and styles
+│       └── icon.png                    # Extension icon
+│
+├── notebooks/                         # Jupyter notebooks for AI training and evaluation
+│   ├── 01_data_preprocessing.ipynb    # Data cleaning and preprocessing
+│   ├── 02_model_training.ipynb        # Training the harassment detection model
+│   ├── 03_model_evaluation.ipynb      # Evaluating model accuracy and performance
+│   ├── 04_inference_and_testing.ipynb # Testing the model on real-world messages
+│   └── 05_demo_notebook.ipynb         # Demo showcasing how the model works
+│
+├── tests/                             # Unit and integration tests
+│   ├── test_detect.py                 # Tests for AI model accuracy
+│   ├── test_screenshot.py             # Tests for screenshot capture
+│   ├── test_email_service.py          # Tests for email alerts
+│   ├── test_routes.py                 # Tests API endpoints
+│   ├── test_utils.py                  # Tests utility functions
+│   └── test_frontend.js               # Tests frontend behavior
+│
+├── docker/                            # Docker containerization setup
+│   ├── Dockerfile                     # Backend container setup
+│   ├── docker-compose.yml             # Compose file for running services
+│   └── .dockerignore                  # Ignore unnecessary files during container build
+│
+├── .env                               # Stores environment variables (API keys, credentials)
+├── requirements.txt                   # Dependencies for backend (Flask, AI libraries)
+├── README.md                          # Project documentation and setup guide
+├── LICENSE                            # Project license (e.g., MIT, GPL)
+└── .gitignore                         # Ignore unnecessary files in Git
+```
+
+---
+
+## **👥 Team Responsibilities**  
+🔹 **Mrigank (You)** – Backend development, AI integration, DevOps, GitHub maintenance, documentation  
+🔹 **Ritika** – AI model optimization, dataset refinement, training & testing  
+🔹 **Garima & Sugandha** – Frontend UI/UX, browser extension, content scripts  
+
+---
+
+## **🎯 Project Goals**  
+✅ **Develop a working AI model** to detect harassment  
+✅ **Build a functional browser extension** to integrate with LinkedIn  
+✅ **Ensure data privacy and security** (no storage of sensitive messages)  
+✅ **Create a seamless reporting and alert system**  
+
+---
+
+This detailed document will help your teammates understand the full scope of the project and work independently while using ChatGPT for help. 🚀
