@@ -13,11 +13,17 @@ def analyze():
         return jsonify({'error': 'No text provided'}), 400
 
     # Call your actual model function
-    severity_score = analyze_text(text)
+    severity_result = analyze_text(text)  
 
-    # Log the severity score to debug
-    print(f"Generated severity score: {severity_score}")
+    # Ensure `analyze_text` returns a dictionary with `toxicity`, `score`, and `severity`
+    if not isinstance(severity_result, dict) or 'score' not in severity_result:
+        return jsonify({'error': 'Invalid response from analysis model'}), 500
+
+    # Log the severity result to debug
+    print(f"Generated severity score: {severity_result}")
 
     return jsonify({
-        'severity': severity_score
+        
+        'score': severity_result.get('score', 0),
+        
     })

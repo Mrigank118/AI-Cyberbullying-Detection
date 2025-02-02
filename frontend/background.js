@@ -1,26 +1,35 @@
-let processEnabled = false;  // Default state is 'disabled'
-
-// Listen for messages from popup
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.type === "processEnabled") {
-        // Update the processEnabled state based on the toggle
-        processEnabled = request.enabled;
-        console.log("Severity detection enabled:", processEnabled);
-    }
-
-    if (request.action === "fetchSeverity" && processEnabled) {
-        // Proceed with fetching severity only if processEnabled is true
-        fetch("http://127.0.0.1:5000/api/analyze", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text: request.text })
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "analyzeText" && message.text) {
+      // Send the text to the AI API for analysis
+      fetch("http://127.0.0.1:5000/api/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: message.text }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("[Background] Received data from API:", data);
+  
+          // Send back the score to highlight text
+          chrome.runtime.sendMessage({
+            action: "highlightText",
+            score: data.score, // Send score instead of severity
+            text: message.text,
+          });
+  
+          // Ensure the message port stays open while waiting for the response
+          sendResponse({ status: "done", score: data.score }); // Include score in the response
         })
-        .then(response => response.json())
-        .then(data => sendResponse({ success: true, severity: data.severity }))
-        .catch(error => sendResponse({ success: false, error: error.message }));
-
-        return true; // Keeps the response channel open
+        .catch((error) => {
+          console.error("Error calling AI API:", error);
+          sendResponse({ status: "error", message: error.message });
+        });
+  
+      // Keep the message channel open for async response
+      return true;
     } else {
-        sendResponse({ success: false, error: "Severity detection is disabled" });
+      console.warn("[Background] Unknown message received:", message.action);
     }
-});
+  });
