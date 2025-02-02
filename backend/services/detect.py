@@ -1,20 +1,23 @@
 from transformers import pipeline
 
-# Load AI model (Example: Twitter-roBERTa for toxicity detection)
-toxicity_model = pipeline("text-classification", model="unitary/toxic-bert")
+# Load the Hugging Face model once to avoid reloading on every request
+toxicity_classifier = pipeline('text-classification', model='unitary/toxic-bert')
 
-def analyze_text(text):
-    result = toxicity_model(text)[0]
-    score = result['score']
-    label = result['label']
+# Function to analyze text toxicity
+def analyze_text(text, threshold=0.7):
+    result = toxicity_classifier(text)
 
-    # Map AI output to severity levels
-    severity_mapping = {
-        "LABEL_0": "Low",
-        "LABEL_1": "Medium",
-        "LABEL_2": "High"
+    # Extract toxicity score and label
+    toxicity_score = result[0]['score']
+    label = result[0]['label']
+
+    print(f"Toxicity label: {label}, Score: {toxicity_score}")  # Debugging
+
+    # Convert toxicity score to severity (Example Mapping: 1-10 scale)
+    severity = int(toxicity_score * 10)
+
+    return {
+        "toxicity": label,
+        "score": toxicity_score,
+        "severity": severity  # This will be used in the frontend
     }
-
-    severity = severity_mapping.get(label, "Unknown")
-
-    return severity, label

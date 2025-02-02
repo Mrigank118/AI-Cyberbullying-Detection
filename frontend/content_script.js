@@ -1,3 +1,13 @@
+let processEnabled = false;  // Default state is 'disabled'
+
+// Listen for messages from the background script to change the processEnabled state
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.type === "processEnabled") {
+        processEnabled = request.enabled;
+        console.log("Content script - Severity detection:", processEnabled ? "Enabled" : "Disabled");
+    }
+});
+
 // Function to request severity from background.js
 async function getSeverity(text) {
     return new Promise(resolve => {
@@ -11,7 +21,7 @@ async function getSeverity(text) {
     });
 }
 
-// Function to update message colors
+// Function to update message text color based on severity
 async function updateMessagesColor() {
     const messageBubbles = document.querySelectorAll('.msg-s-event-listitem__message-bubble');
 
@@ -24,13 +34,26 @@ async function updateMessagesColor() {
 
         console.log("📩 Extracted:", messageText);
 
-        const severity = await getSeverity(messageText);
-        if (severity === null) continue;
+        // Only fetch severity if processEnabled is true
+        if (processEnabled) {
+            const severity = await getSeverity(messageText);
+            if (severity === null) continue;
 
-        let color = severity >= 8 ? 'red' : severity >= 5 ? 'orange' : 'green';
-        bubble.style.backgroundColor = color;
+            // Set text color based on severity (values are between 0-1)
+            if (severity >= 0.8) {
+                textElement.style.color = 'red';  // High severity
+            } else if (severity >= 0.5) {
+                textElement.style.color = 'orange';  // Medium severity
+            } else {
+                textElement.style.color = '';  // Reset to default for low severity
+            }
+        }
     }
 }
 
-// Run every 5 seconds
-setInterval(updateMessagesColor, 5000);
+// Run every 5 seconds if process is enabled
+setInterval(() => {
+    if (processEnabled) {
+        updateMessagesColor();
+    }
+}, 5000);

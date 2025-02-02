@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-import random
 from flask_cors import CORS
+from services.detect import analyze_text  # Import your actual model function
 
 ai_bp = Blueprint('ai', __name__)
 
@@ -12,10 +12,10 @@ def analyze():
     if not text:
         return jsonify({'error': 'No text provided'}), 400
 
-    # Generate a random severity score between 1 and 10
-    severity_score = random.randint(1, 10)
+    # Call your actual model function
+    severity_score = analyze_text(text)
 
-    # Log the severity score to see what is being returned
+    # Log the severity score to debug
     print(f"Generated severity score: {severity_score}")
 
     return jsonify({

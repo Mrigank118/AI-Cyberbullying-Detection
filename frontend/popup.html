@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyberbullying Detector</title>
-    <link rel="stylesheet" href="popup.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-    <div class="container">
-        <div id="mainContent">
-            <h2>Cyberbullying Detector</h2>
+    <div class="popup-container">
+        <div class="popup-header">
+            <h2 class="popup-title">AI Cyberbullying</h2>
+            <p class="popup-description">enable or disable the severity detection</p>
+        </div>
 
-            <div class="toggle-group">
-                <label class="switch">
-                    <input type="checkbox" id="bullyToggle">
-                    <span class="slider"></span>
-                </label>
-                <p>Cyberbullying Detection</p>
-            </div>
+        <!-- Enable Severity Detection Toggle -->
+        <div class="toggle-group">
+            <label class="switch">
+                <input type="checkbox" id="processToggle">
+                <span class="slider"></span>
+            </label>
+            <p class="toggle-label">Enable Severity Detection</p>
+        </div>
 
-            <div class="toggle-group">
-                <label class="switch">
-                    <input type="checkbox" id="nudityToggle">
-                    <span class="slider"></span>
-                </label>
-                <p>Nudity Removal</p>
-            </div>
+        <!-- Enable Nudity Detection Toggle -->
+        <div class="toggle-group">
+            <label class="switch">
+                <input type="checkbox" id="nudityToggle">
+                <span class="slider"></span>
+            </label>
+            <p class="toggle-label">Enable Nudity Detection</p>
+        </div>
 
-            <!-- Info Icon on the left -->
-            <div class="info-container">
-                <img src="assets/info.png" alt="Information" class="info-image">
-            </div>
-
+        <!-- Information Icon -->
+        <div class="info-container">
+            <img src="assets/info.png" alt="Information" class="info-icon">
         </div>
     </div>
-
+    
     <script src="popup.js"></script>
 </body>
 </html>
