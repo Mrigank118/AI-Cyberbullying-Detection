@@ -1,0 +1,113 @@
+/* Importing Poppins font */
+body {
+    width: 350px;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.container {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+#mainContent {
+    display: block;
+}
+
+.toggle-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: gray;
+    transition: 0.3s;
+    border-radius: 25px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+/* Info Image Styling */
+.info-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.info-image {
+    width: 25px;  /* Adjust the size as needed */
+    height: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    margin-right: 10px; /* Adds space between the image and text */
+}
+
+.info-image:hover {
+    opacity: 1;
+}
+
+/* Ensures the text content appears inline with the info image */
+.toggle-group p {
+    margin-left: 10px;
+}
